@@ -1,4 +1,4 @@
-<!-- templates/index.html (unchanged) -->
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,23 +10,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="background-container">
-        <div class="grid-overlay"></div>
-        <div class="particles-container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        <div class="glow"></div>
-    </div>
-    
     <div class="terminal-container">
         <div class="terminal-header">
             <div class="header-dots">
@@ -37,7 +20,7 @@
             <div class="header-title">portfolio - {{ data.username if data.username else 'guest' }}</div>
             <div class="header-controls">
                 <button id="theme-toggle" class="theme-toggle">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-adjust"></i>
                 </button>
             </div>
         </div>
@@ -55,7 +38,6 @@
                         <div class="profile-container">
                             <div class="profile-pic" id="profile-pic">
                                 <img src="{{ url_for('static', filename='imgs/profile.jpg') }}" alt="Profile Picture">
-                                <div class="online-status"></div>
                             </div>
                             <div class="profile-info">
                                 <div class="info-item">
@@ -104,7 +86,7 @@
                             <div class="skill-bar">
                                 <span class="skill-name">C++</span>
                                 <div class="progress-container">
-                                    <div class="progress-bar" style="width: 50%"></div>
+                                    <div class="progress-bar" style="width: 60%"></div>
                                 </div>
                             </div>
                             <div class="skill-bar">
@@ -205,37 +187,68 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- OS Visualization -->
-                        <div class="os-visualization">
-                            <div class="visualization-header">
-                                <span class="section-prompt"><i class="fas fa-chart-pie"></i> OS Distribution</span>
-                            </div>
-                            <div class="visualization-content">
-                                <div class="os-chart">
-                                    <div class="chart-segment windows-segment" style="width: 50%">
-                                        <span class="chart-label">Windows</span>
-                                    </div>
-                                    <div class="chart-segment linux-segment" style="width: 40%">
-                                        <span class="chart-label">Linux</span>
-                                    </div>
-                                    <div class="chart-segment other-segment" style="width: 10%">
-                                        <span class="chart-label">Other</span>
-                                    </div>
+                    </div>
+
+                    <!-- Code Editors & IDEs Section -->
+                    <div class="section" id="editors-section">
+                        <div class="section-header">
+                            <span class="section-prompt"><i class="fas fa-laptop-code"></i> CODE EDITORS & IDEs</span>
+                        </div>
+                        <div class="editors-grid">
+                            <div class="editor-column">
+                                <div class="subsection-title">
+                                    <span class="editor-prompt"><i class="fas fa-terminal"></i> Terminal Editors</span>
                                 </div>
-                                <div class="chart-legend">
-                                    <div class="legend-item">
-                                        <div class="legend-color windows-color"></div>
-                                        <span>Windows (50%)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color linux-color"></div>
-                                        <span>Linux (40%)</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color other-color"></div>
-                                        <span>Other (10%)</span>
-                                    </div>
+                                <div class="editor-list">
+                                    {% if data.editors and data.editors.terminal %}
+                                        {% for editor in data.editors.terminal %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> {{ editor.name }}</span>
+                                        </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> No data</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="editor-column">
+                                <div class="subsection-title">
+                                    <span class="editor-prompt"><i class="fas fa-laptop"></i> GUI Editors</span>
+                                </div>
+                                <div class="editor-list">
+                                    {% if data.editors and data.editors.gui %}
+                                        {% for editor in data.editors.gui %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> {{ editor.name }}</span>
+                                        </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> No data</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="editor-column">
+                                <div class="subsection-title">
+                                    <span class="editor-prompt"><i class="fas fa-project-diagram"></i> IDEs</span>
+                                </div>
+                                <div class="editor-list">
+                                    {% if data.editors and data.editors.ides %}
+                                        {% for editor in data.editors.ides %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> {{ editor.name }}</span>
+                                        </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="editor-item">
+                                            <span class="prompt-label"><i class="fas fa-chevron-right"></i> No data</span>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

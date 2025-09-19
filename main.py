@@ -37,6 +37,20 @@ def index():
             },
             'other': ['MS-DOS', 'FREE-BSD']
         },
+        'editors': {
+            'terminal': [
+                {'name': 'Vim'},
+                {'name': 'Nano'}
+            ],
+            'gui': [
+                {'name': 'Zed'},
+                {'name': 'Visual Studio Code'}
+            ],
+            'ides': [
+                {'name': 'Visual Studio'},
+                {'name': 'PyCharm'}
+            ]
+        },
         'specs': {
             'cpu': 'Ryzen 3 PRO 2200G 3.5Ghz',
             'gpu': 'AMD Radeon Vega 8 2GB (iGPU)',
