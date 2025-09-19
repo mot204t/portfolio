@@ -1,5 +1,6 @@
 # app.py
 from flask import Flask, render_template
+from flask import Flask, send_from_directory
 import os
 
 app = Flask(__name__)
@@ -92,8 +93,11 @@ def internal_error(error):
     }
     return render_template('index.html', data=error_data), 500
 
+@app.route('/.well-known/discord')
+def serve_discord_file():
+    return send_from_directory('static/.well-known', 'discord')
+
 if __name__ == '__main__':
     # Use the PORT environment variable for Render deployment
     port = int(os.environ.get('PORT', 10000))
-
     app.run(host='0.0.0.0', port=port, debug=False)
