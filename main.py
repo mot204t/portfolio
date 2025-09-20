@@ -95,7 +95,7 @@ def internal_error(error):
 
 @app.route('/.well-known/discord')
 def serve_discord_file():
-    return send_from_directory('static/.well-known', 'discord')
+    return send_from_directory('static/discord-verification', 'discord')
 
 if __name__ == '__main__':
     # Use the PORT environment variable for Render deployment
